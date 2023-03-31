@@ -1,0 +1,14 @@
+{
+  "name": "service-socket",
+  "version": "1.0.0",
+  "description": "Chat WebSocket Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "socket.io": "^4.6.1"
+  },
+  "author": "Daniel Carreira",
+  "license": "ISC"
+}
