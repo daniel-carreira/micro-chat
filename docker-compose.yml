@@ -1,0 +1,22 @@
+name: chat-app
+services:
+  chat-page:
+    image: page
+    build: service-page
+    ports:
+    - "3000:80"
+
+  chat-api:
+    image: api
+    build: service-api
+    ports:
+    - "8001:3000"
+    
+  chat-socket:
+    image: socket
+    build: service-socket
+    ports:
+    - "8000:3000"
+
+  chat-database:
+    image: mongo
