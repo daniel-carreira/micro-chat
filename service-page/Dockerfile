@@ -2,6 +2,6 @@ from nginx:latest
 
 WORKDIR /usr/share/nginx/html
 
-COPY dist/* .
+COPY build/* .
 
 RUN chmod -R 755 .
