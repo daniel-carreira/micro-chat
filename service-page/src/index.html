@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MicroChat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <div class="bottom-container">
+      <form id="form-image">
+        <label for="input-image"></label>
+        <input id="input-image" type="file" accept="image/*" />
+      </form>
+      <form id="form-text">
+        <input id="input-text" autocomplete="off" placeholder="Write something..." />
+      </form>
+    </div>
+    <div class="spacer"></div>
+  </body>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="script.js"></script>
+</html>

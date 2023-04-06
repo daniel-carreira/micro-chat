@@ -5,16 +5,12 @@ services:
     build: service-page
     ports:
     - "3000:80"
-
-  api:
-    image: chat-api
-    build: service-api
-    ports:
-    - "8001:3000"
     
   socket:
     image: chat-socket
     build: service-socket
+    environment:
+    - DATABASE_URI=database
     ports:
     - "8000:3000"
 

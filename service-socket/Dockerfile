@@ -1,9 +1,10 @@
 FROM node:latest
 WORKDIR /usr/app
 
-COPY ./package.json .
+COPY ./src/package.json .
 RUN npm install
 
-COPY ./index.js .
+COPY ./src/index.js .
+COPY ./src/google-bucket-key.json .
 
 ENTRYPOINT ["node", "index.js"]

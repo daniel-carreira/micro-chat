@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  padding-bottom: 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #313338;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #2B2D31;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #1A1B1E;
+  border-radius: 5px;
+}
+
+.spacer {
+  height: 20px;
+}
+
+.bottom-container {
+  margin: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: #383a40;
+  padding: 0.5rem;
+  border-radius: 10px;
+  align-content: center;
+}
+
+#form-text {
+  display: flex;
+  flex-grow: 1;
+  align-self: center;
+  box-sizing: border-box;
+}
+
+#input-text {
+  border: none;
+  flex-grow: 1;
+  background: transparent;
+  color: #b5bac1;
+  margin: 0.25rem;
+  font-size: medium;
+  outline: none;
+}
+
+::placeholder {
+  color: #6d6f78
+}
+
+#messages {
+  list-style-type: none;
+  padding: 0;
+}
+
+#messages>li {
+  color: #b5bac1;
+  padding: 0.8rem 3rem;
+}
+
+img {
+  max-width: 50%;
+  max-height: 50%;
+  border-radius: 10px;
+}
+
+#messages>li:nth-child(odd) {
+  background: #2B2D31;
+}
+
+#form-image input[type="file"] {
+  position: absolute;
+  left: -99999px;
+}
+
+#form-image label[for="input-image"] {
+  display: inline-block;
+  width: 27px;
+  height: 27px;
+  background-image: url(./image.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 15px;
+  margin-top: 5px;
+}
