@@ -1,9 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker-compose'
   args: ['up', '--build']
-  timeout: '1600s'
   env:
-    - 'COMPOSE_PROJECT_NAME=micro-chat'
+    - 'COMPOSE_PROJECT_NAME=chat-app'
     - 'COMPOSE_FILE=docker-compose.yaml'
 options:
   logging: 'NONE'
