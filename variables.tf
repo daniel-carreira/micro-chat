@@ -21,4 +21,6 @@ variable "bucket_location" {
 }
 
 variable "mongodb_connection_string" {
+  type    = string
+  default = "mongodb://localhost:27017"
 }
