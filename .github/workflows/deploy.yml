@@ -25,19 +25,19 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push the page service image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
-          push: true
           context: service-page
           file: service-page/Dockerfile
-          tags: danielcarreira/microchatpage:latest
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/microchatpage:latest
 
       - name: Build and push the socket service image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
-          push: true
           context: service-socket
           file: service-socket/Dockerfile
+          push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/microchatsocket:latest
 
       - name: Set up Terraform
