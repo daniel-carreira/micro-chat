@@ -9,8 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Storing Google credentials to json file'
+      - name: Setup Secrets
         uses: actions/secrets@v1
+
+      - name: 'Storing Google credentials to json file'
         with:
           secrets: GOOGLE_AUTH_CONFIG
         run: echo ${{ secrets.GOOGLE_AUTH_CONFIG }} > google-key.json
