@@ -26,11 +26,13 @@ jobs:
 
       - name: Build and push the page service image
         uses: docker/build-push-action@v4
+        env:
+          USERNAME: ${{ secrets.DOCKER_USERNAME }}
         with:
           push: true
           context: service-page
           file: service-page/Dockerfile
-          tags: ${{ secrets.DOCKER_USERNAME }}/microchatpage:latest
+          tags: $USERNAME/microchatpage:latest
 
       - name: Build and push the socket service image
         uses: docker/build-push-action@v4
