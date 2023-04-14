@@ -28,16 +28,16 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          context: ./service-page
-          file: ./service-page/Dockerfile
+          context: .
+          file: service-page/Dockerfile
           tags: ${{ secrets.DOCKER_USERNAME }}/microchatpage:latest
 
       - name: Build and push the socket service image
         uses: docker/build-push-action@v4
         with:
           push: true
-          context: ./service-socket
-          file: ./service-socket/Dockerfile
+          context: .
+          file: service-socket/Dockerfile
           tags: ${{ secrets.DOCKER_USERNAME }}/microchatsocket:latest
 
       - name: Set up Terraform
