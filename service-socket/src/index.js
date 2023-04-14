@@ -19,7 +19,7 @@ const messages_collection = client.db('micro-chat').collection('messages');
 const { Storage } = require('@google-cloud/storage');
 const storage = new Storage({
   projectId: 'micro-chat-382821',
-  keyFilename: './google-bucket-key.json'
+  keyFilename: './google-key.json'
 });
 const bucketName = 'micro-chat-bucket';
 const bucket = storage.bucket(bucketName);
