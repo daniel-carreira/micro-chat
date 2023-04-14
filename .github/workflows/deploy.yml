@@ -31,16 +31,14 @@ jobs:
       - name: Build and push the page service image
         uses: docker/build-push-action@v4
         with:
-          context: service-page
-          file: service-page/Dockerfile
+          context: "{{defaultContext}}:service-page"
           push: true
           tags: danielcarreira/microchatpage:latest
 
       - name: Build and push the socket service image
         uses: docker/build-push-action@v4
         with:
-          context: service-socket
-          file: service-socket/Dockerfile
+          context: "{{defaultContext}}:service-socket"
           push: true
           tags: danielcarreira/microchatsocket:latest
 
