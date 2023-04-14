@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Storing Google credentials to json file'
-        run: echo ${{ secrets.GOOGLE_AUTH_CONFIG }} | base64 -d > google-key.json
+        uses: actions/secrets@v1
+        with:
+          secrets: GOOGLE_AUTH_CONFIG
+        run: echo ${{ secrets.GOOGLE_AUTH_CONFIG }} > google-key.json
         shell: bash
 
       - name: Set up Docker
