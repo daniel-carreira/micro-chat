@@ -30,7 +30,7 @@ jobs:
           context: service-page
           file: service-page/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/microchatpage:latest
+          tags: danielcarreira/microchatpage:latest
 
       - name: Build and push the socket service image
         uses: docker/build-push-action@v4
@@ -38,7 +38,7 @@ jobs:
           context: service-socket
           file: service-socket/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/microchatsocket:latest
+          tags: danielcarreira/microchatsocket:latest
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
