@@ -44,7 +44,7 @@ jobs:
       - name: Terraform init
         run: terraform init
 
-      - name: Terraform plan -var "MONGODB_CONNECTION_STRING=${{ secrets.MONGODB_CONNECTING_STRING }}"
+      - name: Terraform plan
         run: terraform plan
       
       - name: Terraform apply

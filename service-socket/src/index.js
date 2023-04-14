@@ -11,8 +11,7 @@ const io = new Server(server, {
 
 // MongoDB
 const { MongoClient } = require("mongodb");
-var database_uri = process.env.DATABASE_URI || 'localhost';
-const client = new MongoClient(`mongodb://${database_uri}:27017`);
+const client = new MongoClient(`${process.env.DATABASE_URL}`);
 const messages_collection = client.db('micro-chat').collection('messages');
 
 // Google Cloud Storage
@@ -70,6 +69,6 @@ io.on('connection', async (socket) => {
   });
 });
 
-server.listen(3000, () => {
+server.listen(process.env.PORT || 3000, () => {
   console.log('Listening on *:3000');
 });
