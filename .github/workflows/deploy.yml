@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push the page service image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v3
         with:
           push: true
           context: .
@@ -33,7 +33,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/microchatpage:latest
 
       - name: Build and push the socket service image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v3
         with:
           push: true
           context: .
