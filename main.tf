@@ -28,15 +28,16 @@ resource "google_compute_network" "vpc_network" {
 }
 
 resource "google_cloud_run_v2_service" "page" {
-  name     = "cloudrun-client-service"
+  name     = "client-service"
   location = "us-central1"
   ingress = "INGRESS_TRAFFIC_ALL"
 
   template {
     containers {
       image = "danielcarreira/microchatpage:latest"
-      ports {
-        container_port = 80
+      env {
+        name = "SOCKET_URI"
+        value = google_cloud_run_v2_service.socket.uri
       }
     }
   }
@@ -49,15 +50,16 @@ resource "google_cloud_run_v2_service_iam_policy" "page-policy" {
 }
 
 resource "google_cloud_run_v2_service" "socket" {
-  name     = "cloudrun-socket-service"
+  name     = "socket-service"
   location = "us-central1"
   ingress = "INGRESS_TRAFFIC_ALL"
 
   template {
     containers {
       image = "danielcarreira/microchatsocket:latest"
-      ports {
-        container_port = 80
+      env {
+        name = "DATABASE_URL"
+        value = var.mongodb_connection_string
       }
     }
   }
