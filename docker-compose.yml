@@ -3,6 +3,8 @@ services:
   page:
     image: chat-page
     build: service-page
+    environment:
+    - SOCKET_URI=socket
     ports:
     - "3000:80"
     
@@ -10,7 +12,10 @@ services:
     image: chat-socket
     build: service-socket
     environment:
-    - DATABASE_URI=database
+    - DATABASE_CONN=database
+    - PROJECT=micro-chat-382821
+    - CREDENTIALS=./google-key.json
+    - BUCKET_NAME=micro-chat-bucket
     ports:
     - "8000:3000"
 

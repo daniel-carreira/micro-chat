@@ -11,16 +11,18 @@ const io = new Server(server, {
 
 // MongoDB
 const { MongoClient } = require("mongodb");
-const client = new MongoClient(`${process.env.DATABASE_URL}`);
+const isComplete = process.env.DATABASE_CONN.startsWith('mongodb')
+const completeConnStr = isComplete ? `${process.env.DATABASE_CONN}` : `mongodb://${process.env.DATABASE_CONN}:27017`
+const client = new MongoClient(completeConnStr);
 const messages_collection = client.db('micro-chat').collection('messages');
 
 // Google Cloud Storage
 const { Storage } = require('@google-cloud/storage');
 const storage = new Storage({
-  projectId: 'micro-chat-382821',
-  keyFilename: './google-key.json'
+  projectId: `${process.env.PROJECT}`,
+  keyFilename: `${process.env.CREDENTIALS}`
 });
-const bucketName = 'micro-chat-bucket';
+const bucketName = `${process.env.BUCKET_NAME}`;
 const bucket = storage.bucket(bucketName);
 
 io.on('connection', async (socket) => {
@@ -69,6 +71,7 @@ io.on('connection', async (socket) => {
   });
 });
 
-server.listen(process.env.PORT || 3000, () => {
-  console.log('Listening on *:3000');
+let port = process.env.PORT || 3000
+server.listen(port, () => {
+  console.log(`Listening on *:${port}`);
 });

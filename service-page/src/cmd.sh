@@ -1,0 +1,1 @@
+find /usr/share/nginx/html -type f -print0 | xargs -0 sed -i "s|__SOCKET_URI__|${SOCKET_URI:-localhost}|g"

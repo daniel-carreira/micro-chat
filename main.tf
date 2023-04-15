@@ -8,17 +8,17 @@ terraform {
 }
 
 provider "google" {
-  credentials = file(var.credentials_file)
+  credentials = file(var.credentials)
   project 	= var.project
   region  	= var.region
   zone    	= var.zone
 }
 
-data "google_iam_policy" "admin" {
+data "google_iam_policy" "public" {
   binding {
-    role = "roles/editor"
+    role = "roles/run.invoker"
     members = [
-      "user:danielcarreira7@gmail.com",
+      "allUsers",
     ]
   }
 }
@@ -46,7 +46,7 @@ resource "google_cloud_run_v2_service_iam_policy" "page-policy" {
   project = google_cloud_run_v2_service.page.project
   location = google_cloud_run_v2_service.page.location
   name = google_cloud_run_v2_service.page.name
-  policy_data = data.google_iam_policy.admin.policy_data
+  policy_data = data.google_iam_policy.public.policy_data
 }
 
 resource "google_cloud_run_v2_service" "socket" {
@@ -58,8 +58,20 @@ resource "google_cloud_run_v2_service" "socket" {
     containers {
       image = "danielcarreira/microchatsocket:latest"
       env {
-        name = "DATABASE_URL"
-        value = var.mongodb_connection_string
+        name = "DATABASE_CONN"
+        value = var.mongodb_connection
+      }
+      env {
+        name = "BUCKET_NAME"
+        value = var.bucket
+      }
+      env {
+        name = "PROJECT"
+        value = var.project
+      }
+      env {
+        name = "CREDENTIALS"
+        value = var.credentials
       }
     }
   }
@@ -68,7 +80,7 @@ resource "google_cloud_run_v2_service_iam_policy" "socket-policy" {
   project = google_cloud_run_v2_service.socket.project
   location = google_cloud_run_v2_service.socket.location
   name = google_cloud_run_v2_service.socket.name
-  policy_data = data.google_iam_policy.admin.policy_data
+  policy_data = data.google_iam_policy.public.policy_data
 }
 
 #resource "google_storage_bucket" "bucket" {

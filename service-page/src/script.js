@@ -1,4 +1,4 @@
-var socket = io(`ws://${process.env.SOCKET_URI}`);
+var socket = io(`ws://__SOCKET_URI__`);
 
 var messages = document.getElementById('messages');
 var formText = document.getElementById('form-text');

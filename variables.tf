@@ -1,8 +1,9 @@
-
 variable "project" {
+  default = "app"
 }
 
-variable "credentials_file" {
+variable "credentials" {
+  default = "./google-key.json"
 }
 
 variable "region" {
@@ -13,14 +14,10 @@ variable "zone" {
   default = "us-central1-c"
 }
 
-variable "bucket_name" {
+variable "bucket" {
+  default = "us-central1-c"
 }
 
-variable "bucket_location" {
-  default = "US"
-}
-
-variable "mongodb_connection_string" {
-  type    = string
+variable "mongodb_connection" {
   default = "mongodb://localhost:27017"
 }
