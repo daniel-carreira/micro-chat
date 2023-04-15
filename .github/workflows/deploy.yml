@@ -45,7 +45,7 @@ jobs:
         run: terraform init
 
       - name: Terraform plan
-        run: terraform plan
+        run: terraform plan -destroy
       
       - name: Terraform apply
         run: terraform apply --auto-approve 

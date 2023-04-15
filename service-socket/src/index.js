@@ -13,6 +13,7 @@ const io = new Server(server, {
 const { MongoClient } = require("mongodb");
 const isComplete = process.env.DATABASE_CONN.startsWith('mongodb')
 const completeConnStr = isComplete ? `${process.env.DATABASE_CONN}` : `mongodb://${process.env.DATABASE_CONN}:27017`
+console.log(completeConnStr)
 const client = new MongoClient(completeConnStr);
 const messages_collection = client.db('micro-chat').collection('messages');
 
