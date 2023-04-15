@@ -1,4 +1,4 @@
-name: 'Trigger on push to main'
+name: 'Deploy Images on Push'
 
 on:
   push:
