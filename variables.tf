@@ -1,9 +1,13 @@
 variable "project" {
-  default = "app"
+  default = "project-id"
 }
 
-variable "credentials" {
-  default = "./google-key.json"
+variable "bucket" {
+  default = "bucket-id"
+}
+
+variable "bucket_location" {
+  default = "us-central1-c"
 }
 
 variable "region" {
@@ -11,10 +15,6 @@ variable "region" {
 }
 
 variable "zone" {
-  default = "us-central1-c"
-}
-
-variable "bucket" {
   default = "us-central1-c"
 }
 

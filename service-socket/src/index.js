@@ -11,19 +11,19 @@ const io = new Server(server, {
 
 // MongoDB
 const { MongoClient } = require("mongodb");
-const isComplete = process.env.DATABASE_CONN.startsWith('mongodb')
-const completeConnStr = isComplete ? `${process.env.DATABASE_CONN}` : `mongodb://${process.env.DATABASE_CONN}:27017`
-console.log(completeConnStr)
-const client = new MongoClient(completeConnStr);
+var database_uri = process.env.DATABASE_URI || 'localhost';
+const is_conn_str = database_uri.startsWith('mongodb');
+const database_conn_str = is_conn_str ? database_uri : `mongodb://${database_uri}:27017`
+const client = new MongoClient(database_conn_str);
 const messages_collection = client.db('micro-chat').collection('messages');
 
 // Google Cloud Storage
 const { Storage } = require('@google-cloud/storage');
 const storage = new Storage({
-  projectId: `${process.env.PROJECT}`,
-  keyFilename: `${process.env.CREDENTIALS}`
+  keyFilename: './google-key.json'
 });
-const bucketName = `${process.env.BUCKET_NAME}`;
+
+const bucketName = process.env.BUCKET;
 const bucket = storage.bucket(bucketName);
 
 io.on('connection', async (socket) => {

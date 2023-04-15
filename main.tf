@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-  credentials = file(var.credentials)
+  credentials = file("./google-key.json")
   project 	= var.project
   region  	= var.region
   zone    	= var.zone
@@ -58,20 +58,16 @@ resource "google_cloud_run_v2_service" "socket" {
     containers {
       image = "danielcarreira/microchatsocket:latest"
       env {
-        name = "DATABASE_CONN"
+        name = "DATABASE_URI"
         value = var.mongodb_connection
       }
       env {
-        name = "BUCKET_NAME"
+        name = "BUCKET"
         value = var.bucket
       }
       env {
         name = "PROJECT"
         value = var.project
-      }
-      env {
-        name = "CREDENTIALS"
-        value = var.credentials
       }
     }
   }
@@ -84,7 +80,7 @@ resource "google_cloud_run_v2_service_iam_policy" "socket-policy" {
 }
 
 #resource "google_storage_bucket" "bucket" {
-#  name      	= var.bucket_name
+#  name      	= var.bucket
 #  location  	= var.bucket_location
 #  force_destroy = true
 #}

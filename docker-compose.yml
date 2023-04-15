@@ -4,20 +4,22 @@ services:
     image: chat-page
     build: service-page
     environment:
-    - SOCKET_URI=socket
+    - SOCKET_URI=localhost:8000
     ports:
     - "3000:80"
+    depends_on:
+    - socket
     
   socket:
     image: chat-socket
     build: service-socket
     environment:
-    - DATABASE_CONN=database
-    - PROJECT=micro-chat-382821
-    - CREDENTIALS=./google-key.json
-    - BUCKET_NAME=micro-chat-bucket
+    - DATABASE_URI=database
+    - BUCKET=micro-chat-bucket
     ports:
     - "8000:3000"
+    depends_on:
+    - database
 
   database:
     image: mongo
