@@ -14,7 +14,9 @@ jobs:
 
       - name: 'Storing Google credentials to json file'
         shell: bash
-        run: echo "${{ secrets.GOOGLE_AUTH_CONFIG }}" | tee google-key.json | tee service-socket/src/google-key.json
+        env:
+          GOOGLE_AUTH_CONFIG: ${{ secrets.GOOGLE_AUTH_CONFIG }}
+        run: echo $GOOGLE_AUTH_CONFIG | tee google-key.json | tee service-socket/src/google-key.json
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
