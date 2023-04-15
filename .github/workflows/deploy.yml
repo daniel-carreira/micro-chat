@@ -9,12 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Storing Google credentials to json file'
-        shell: bash
-        env:
-          GOOGLE_AUTH_CONFIG: ${{ secrets.GOOGLE_AUTH_CONFIG }}
-        run: echo $GOOGLE_AUTH_CONFIG | tee google-key.json | tee service-socket/src/google-key.json
-
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
 
