@@ -41,14 +41,14 @@ jobs:
           push: true
           tags: danielcarreira/microchatsocket:latest
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v2
+      #- name: Set up Terraform
+      #  uses: hashicorp/setup-terraform@v2
       
-      - name: Terraform init
-        run: terraform init
+      #- name: Terraform init
+      #  run: terraform init
 
-      - name: Terraform destroy
-        run: terraform destroy -auto-approve
+      #- name: Terraform destroy
+      #  run: terraform destroy -auto-approve
       
-      - name: Terraform apply
-        run: terraform apply --auto-approve 
+      #- name: Terraform apply
+      #  run: terraform apply --auto-approve 

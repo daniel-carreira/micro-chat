@@ -22,12 +22,8 @@ data "google_iam_policy" "public" {
   }
 }
 
-resource "google_compute_network" "vpc_network" {
-  name = "terraform-network"
-}
-
 resource "google_cloud_run_v2_service" "page" {
-  name     = "client-service"
+  name     = "micro-chat-client"
   location = "us-central1"
   ingress = "INGRESS_TRAFFIC_ALL"
 
@@ -49,7 +45,7 @@ resource "google_cloud_run_v2_service_iam_policy" "page-policy" {
 }
 
 resource "google_cloud_run_v2_service" "socket" {
-  name     = "socket-service"
+  name     = "micro-chat-socket"
   location = "us-central1"
   ingress = "INGRESS_TRAFFIC_ALL"
 
