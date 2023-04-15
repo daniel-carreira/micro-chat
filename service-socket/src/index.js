@@ -14,6 +14,7 @@ const { MongoClient } = require("mongodb");
 var database_uri = process.env.DATABASE_URI || 'localhost';
 const is_conn_str = database_uri.startsWith('mongodb');
 const database_conn_str = is_conn_str ? database_uri : `mongodb://${database_uri}:27017`
+console.log(database_conn_str)
 const client = new MongoClient(database_conn_str);
 const messages_collection = client.db('micro-chat').collection('messages');
 

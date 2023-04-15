@@ -11,7 +11,6 @@ provider "google" {
   credentials = file("./google-key.json")
   project 	= var.project
   region  	= var.region
-  zone    	= var.zone
 }
 
 data "google_iam_policy" "public" {
