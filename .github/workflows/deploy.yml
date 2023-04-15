@@ -42,10 +42,10 @@ jobs:
         uses: hashicorp/setup-terraform@v2
       
       - name: Terraform init
-        run: terraform init -target=module.prod
+        run: terraform init
 
       - name: Terraform plan
-        run: terraform plan -target=module.prod
+        run: terraform plan
       
       - name: Terraform apply
-        run: terraform apply -target=module.prod --auto-approve 
+        run: terraform apply --auto-approve 
