@@ -6,11 +6,11 @@ variable "bucket" {
   default = "bucket-id"
 }
 
-variable "bucket_location" {
-  default = "us-central1-c"
+variable "region" {
+  default = "us-central1"
 }
 
-variable "region" {
+variable "location" {
   default = "us-central1"
 }
 

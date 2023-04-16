@@ -5,6 +5,13 @@ terraform {
       version = "4.58.0"
     }
   }
+  cloud {
+    organization = "danielcarreira7"
+
+    workspaces {
+      name = "micro-chat-workspace"
+    }
+  }
 }
 
 provider "google" {
@@ -24,7 +31,7 @@ data "google_iam_policy" "public" {
 
 resource "google_cloud_run_v2_service" "page" {
   name     = "micro-chat-client"
-  location = "us-central1"
+  location = var.location
   ingress = "INGRESS_TRAFFIC_ALL"
 
   template {
@@ -46,7 +53,7 @@ resource "google_cloud_run_v2_service_iam_policy" "page-policy" {
 
 resource "google_cloud_run_v2_service" "socket" {
   name     = "micro-chat-socket"
-  location = "us-central1"
+  location = var.location
   ingress = "INGRESS_TRAFFIC_ALL"
 
   template {
@@ -70,8 +77,8 @@ resource "google_cloud_run_v2_service_iam_policy" "socket-policy" {
   policy_data = data.google_iam_policy.public.policy_data
 }
 
-#resource "google_storage_bucket" "bucket" {
-#  name      	= var.bucket
-#  location  	= var.bucket_location
-#  force_destroy = true
-#}
+resource "google_storage_bucket" "bucket" {
+  name      	= var.bucket
+  location  	= var.location
+  force_destroy = true
+}

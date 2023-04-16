@@ -15,7 +15,7 @@ services:
     build: service-socket
     environment:
     - DATABASE_URI=database
-    - BUCKET=micro-chat-bucket
+    - BUCKET=micro-chat-bucket-dev
     ports:
     - "8000:3000"
     depends_on:
