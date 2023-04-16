@@ -1,4 +1,7 @@
-var socket = io(`ws://__SOCKET_URI__`);
+const socket_uri = '__SOCKET_URI__';
+var socket = io(`ws://${socket_uri}`);
+
+console.log(socket_uri);
 
 var messages = document.getElementById('messages');
 var formText = document.getElementById('form-text');

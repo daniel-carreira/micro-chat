@@ -60,10 +60,6 @@ resource "google_cloud_run_v2_service" "socket" {
         name = "BUCKET"
         value = var.bucket
       }
-      env {
-        name = "PROJECT"
-        value = var.project
-      }
     }
   }
 }
